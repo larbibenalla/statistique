@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer L
+@{ ViewData["Title"] = L["Stats"].Value; }
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>@L["DashboardTitle"]</h2>
+    <button id="resetBtn" class="btn btn-outline-danger btn-sm">@L["ResetData"]</button>
+</div>
+<div class="row g-3 mb-3">
+    <div class="col-md-3"><div class="card text-bg-primary"><div class="card-body"><h6>@L["Total"]</h6><h3 id="kpiTotal">0</h3></div></div></div>
+    <div class="col-md-3"><div class="card text-bg-success"><div class="card-body"><h6>@L["Inscriptions"]</h6><h3 id="kpiIns">0</h3></div></div></div>
+    <div class="col-md-3"><div class="card text-bg-danger"><div class="card-body"><h6>@L["Radiations"]</h6><h3 id="kpiRad">0</h3></div></div></div>
+    <div class="col-md-3"><div class="card text-bg-warning"><div class="card-body"><h6>@L["Modifications"]</h6><h3 id="kpiMod">0</h3></div></div></div>
+</div>
+<div class="row g-3">
+    <div class="col-lg-8"><div class="card"><div class="card-body"><h6>@L["PerDay"]</h6><canvas id="chartDay"></canvas></div></div></div>
+    <div class="col-lg-4"><div class="card"><div class="card-body"><h6>@L["PerType"]</h6><canvas id="chartType"></canvas></div></div></div>
+    <div class="col-lg-6"><div class="card"><div class="card-body"><h6>@L["PerCommune"]</h6><canvas id="chartCommune"></canvas></div></div></div>
+    <div class="col-lg-6"><div class="card"><div class="card-body"><h6>@L["PerCircum"]</h6><canvas id="chartCircum"></canvas></div></div></div>
+    <div class="col-lg-6"><div class="card"><div class="card-body"><h6>@L["PerGender"]</h6><canvas id="chartGender"></canvas></div></div></div>
+    <div class="col-lg-6"><div class="card"><div class="card-body"><h6>@L["PerAge"]</h6><canvas id="chartAge"></canvas></div></div></div>
+</div>
+<script src="~/js/stats.js"></script>

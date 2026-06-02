@@ -1,0 +1,150 @@
+@model UploadViewModel
+@{
+    ViewData["Title"] = "رفع ملف Excel";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-cloud-upload me-2"></i>
+                    رفع ملف التسجيلات
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                @if (Model.Success)
+                {
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        @Model.Message
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="@Url.Action("Index", "Dashboard")" class="btn btn-primary btn-lg">
+                            <i class="bi bi-bar-chart me-2"></i>
+                            عرض لوحة التحكم
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div class="alert alert-danger">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            @Model.Message
+                        </div>
+                    }
+
+                    <form asp-action="Upload" method="post" enctype="multipart/form-data" id="uploadForm">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-4">
+                            <label asp-for="ExcelFile" class="form-label fw-bold"></label>
+                            <div class="input-group input-group-lg">
+                                <input asp-for="ExcelFile" type="file" class="form-control" 
+                                       accept=".xlsx,.xls" required
+                                       onchange="updateFileName(this)" />
+                            </div>
+                            <div class="form-text">
+                                <i class="bi bi-info-circle me-1"></i>
+                                الملفات المدعومة: .xlsx, .xls (Excel 2007+)
+                            </div>
+                            <span asp-validation-for="ExcelFile" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-light rounded">
+                            <h6 class="fw-bold mb-2">
+                                <i class="bi bi-file-earmark-spreadsheet me-1"></i>
+                                الأعمدة المتوقعة في الملف:
+                            </h6>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <small class="text-muted">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><i class="bi bi-check text-success me-1"></i>رقم الطلب</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>تاريخ الطلب</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>نوع الطلب</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>الإسم العائلي</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>الإسم الشخصي</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>الجنس</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>تاريخ الإزدياد</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>الحالة العائلية</li>
+                                        </ul>
+                                    </small>
+                                </div>
+                                <div class="col-md-6">
+                                    <small class="text-muted">
+                                        <ul class="list-unstyled mb-0">
+                                            <li><i class="bi bi-check text-success me-1"></i>المستوى الدراسي</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>عمالة/إقليم السكن</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>جماعة السكن</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>وضعية الطلب</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>سبب الوضعية</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>تاريخ الوضعية</li>
+                                            <li><i class="bi bi-check text-success me-1"></i>سبب رفض اللجنة</li>
+                                        </ul>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                <i class="bi bi-upload me-2"></i>
+                                رفع ومعالجة الملف
+                            </button>
+                            <a href="@Url.Action("Index", "Dashboard")" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-right me-1"></i>
+                                العودة للوحة التحكم
+                            </a>
+                        </div>
+                    </form>
+
+                    <hr class="my-4" />
+
+                    <div class="alert alert-info">
+                        <h6 class="fw-bold">
+                            <i class="bi bi-lightbulb me-1"></i>
+                            ملاحظات هامة:
+                        </h6>
+                        <ul class="mb-0">
+                            <li>لا يحتاج الخادم إلى تثبيت Microsoft Excel</li>
+                            <li>يتم قراءة الملف مباشرة باستخدام مكتبة EPPlus</li>
+                            <li>يتم دعم الملفات ذات الرؤوس المدمجة (Grouped headers)</li>
+                            <li>يتم التعرف على الرؤوس العربية تلقائياً</li>
+                            <li>الملفات الكبيرة قد تستغرق وقتاً أطول للمعالجة</li>
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function updateFileName(input) {
+            const fileName = input.files[0]?.name || '';
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (fileName) {
+                const ext = fileName.split('.').pop().toLowerCase();
+                if (ext !== 'xlsx' && ext !== 'xls') {
+                    alert('يرجى اختيار ملف Excel بصيغة .xlsx أو .xls');
+                    input.value = '';
+                    submitBtn.disabled = true;
+                } else {
+                    submitBtn.disabled = false;
+                }
+            }
+        }
+
+        document.getElementById('uploadForm').addEventListener('submit', function() {
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> جاري المعالجة...';
+        });
+    </script>
+}

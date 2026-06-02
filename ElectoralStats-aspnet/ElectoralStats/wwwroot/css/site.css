@@ -1,0 +1,4 @@
+body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background:#f5f7fb; }
+[dir="rtl"] body { font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif; }
+.card { border:0; box-shadow:0 2px 8px rgba(0,0,0,.06); border-radius:.75rem; }
+canvas { max-height: 320px; }

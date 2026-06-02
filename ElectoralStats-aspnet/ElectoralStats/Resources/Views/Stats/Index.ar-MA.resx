@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Stats" xml:space="preserve"><value>إحصائيات</value></data>
+  <data name="DashboardTitle" xml:space="preserve"><value>لوحة الإحصائيات</value></data>
+  <data name="ResetData" xml:space="preserve"><value>مسح المعطيات</value></data>
+  <data name="Total" xml:space="preserve"><value>المجموع</value></data>
+  <data name="Inscriptions" xml:space="preserve"><value>تسجيلات</value></data>
+  <data name="Radiations" xml:space="preserve"><value>تشطيبات</value></data>
+  <data name="Modifications" xml:space="preserve"><value>تعديلات</value></data>
+  <data name="PerDay" xml:space="preserve"><value>حسب اليوم</value></data>
+  <data name="PerType" xml:space="preserve"><value>حسب النوع</value></data>
+  <data name="PerCommune" xml:space="preserve"><value>حسب الجماعة</value></data>
+  <data name="PerCircum" xml:space="preserve"><value>حسب الدائرة</value></data>
+  <data name="PerGender" xml:space="preserve"><value>حسب الجنس</value></data>
+  <data name="PerAge" xml:space="preserve"><value>حسب الفئة العمرية</value></data>
+</root>

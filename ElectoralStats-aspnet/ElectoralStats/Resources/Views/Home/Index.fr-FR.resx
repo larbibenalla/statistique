@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Home" xml:space="preserve"><value>Accueil</value></data>
+  <data name="WelcomeTitle" xml:space="preserve"><value>Bienvenue</value></data>
+  <data name="WelcomeIntro" xml:space="preserve"><value>Cette application analyse en temps réel les listes électorales communales.</value></data>
+  <data name="StartImport" xml:space="preserve"><value>Démarrer l'import</value></data>
+  <data name="OpenDashboard" xml:space="preserve"><value>Ouvrir le tableau</value></data>
+  <data name="FeatureUpload" xml:space="preserve"><value>Import multiple</value></data>
+  <data name="FeatureUploadDesc" xml:space="preserve"><value>Sélectionnez un dossier ou plusieurs fichiers Excel à la fois.</value></data>
+  <data name="FeatureRealtime" xml:space="preserve"><value>Temps réel</value></data>
+  <data name="FeatureRealtimeDesc" xml:space="preserve"><value>Les graphiques se mettent à jour automatiquement.</value></data>
+  <data name="FeatureI18n" xml:space="preserve"><value>Trois langues</value></data>
+  <data name="FeatureI18nDesc" xml:space="preserve"><value>Darija, Français, Anglais avec support RTL.</value></data>
+</root>

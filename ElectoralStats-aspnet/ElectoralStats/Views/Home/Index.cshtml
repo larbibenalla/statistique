@@ -1,0 +1,17 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer L
+@{ ViewData["Title"] = L["Home"].Value; }
+<div class="p-5 bg-light rounded-3 shadow-sm">
+    <h1 class="display-5 fw-bold">@L["WelcomeTitle"]</h1>
+    <p class="lead">@L["WelcomeIntro"]</p>
+    <hr/>
+    <div class="d-flex gap-2">
+        <a class="btn btn-primary btn-lg" asp-controller="Upload" asp-action="Index">@L["StartImport"]</a>
+        <a class="btn btn-outline-secondary btn-lg" asp-controller="Stats" asp-action="Index">@L["OpenDashboard"]</a>
+    </div>
+</div>
+<div class="row mt-4 g-3">
+    <div class="col-md-4"><div class="card"><div class="card-body"><h5>@L["FeatureUpload"]</h5><p class="text-muted">@L["FeatureUploadDesc"]</p></div></div></div>
+    <div class="col-md-4"><div class="card"><div class="card-body"><h5>@L["FeatureRealtime"]</h5><p class="text-muted">@L["FeatureRealtimeDesc"]</p></div></div></div>
+    <div class="col-md-4"><div class="card"><div class="card-body"><h5>@L["FeatureI18n"]</h5><p class="text-muted">@L["FeatureI18nDesc"]</p></div></div></div>
+</div>
